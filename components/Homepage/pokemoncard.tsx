@@ -5,13 +5,16 @@ import Pokemon from "./pokemon";
 function PokemonCard() {
   const ShowAllPokemon = () => {
     const allPokemons: any = useSelector((state: any) => state.pokemons);
-
     return allPokemons.map((singlePoke: any) => (
+      // way 1
       <Pokemon
         key={singlePoke.username}
         name={singlePoke.username}
         image={singlePoke.sprites.other.dream_world.front_default}
       />
+      // way 2
+      // return allPokemons.map((singlePoke: any) => (
+      //   <div key={singlePoke.username}>Hi</div>
     ));
   };
   return (

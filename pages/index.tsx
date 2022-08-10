@@ -5,7 +5,7 @@ import HomePage from "../components/Homepage";
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
-      <h1> Hello!! first next js project </h1>
+      {/* <h1> Hello!! first next js project </h1> */}
       <HomePage />
     </div>
   );
