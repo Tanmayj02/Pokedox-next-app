@@ -1,7 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/jsx-key */
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import Image from "next/image";
 
 function PokemonCharateristics({ name }: any) {
   const [pokemondetails, setPokemonDetails] = useState<any>();
@@ -64,6 +66,11 @@ function PokemonCharateristics({ name }: any) {
               src={pokemondetails.sprites.other.dream_world.front_default}
               alt={pokemondetails.username}
             />
+            {/* <Image
+              src={pokemondetails.sprites.other.dream_world.front_default}
+              alt={pokemondetails.username}
+              layout="fill"
+            /> */}
           </Col>
           <Col lg={3} />
         </Row>

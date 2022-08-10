@@ -1,4 +1,5 @@
 import { Card, Col, Container } from "react-bootstrap";
+import Link from "next/link";
 
 function Pokemon(props: any) {
   const { name, image } = props;
@@ -14,7 +15,9 @@ function Pokemon(props: any) {
           style={{ width: 300, height: 300 }}
         />
         <Card.Footer className="text-center p-2 bg-gradient-secondary text-black">
-          <button className="btn btn-light"> Explore {name} </button>
+          <Link href={`/pokemon/${name}`}>
+            <button className="btn btn-light"> Explore {name}</button>
+          </Link>
         </Card.Footer>
       </Card>
     </Col>
