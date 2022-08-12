@@ -3,10 +3,12 @@ import { useRouter } from "next/router";
 import PokemonCharateristics from "../../components/Pokemoncharacteristics";
 import HomePage from "../../components/Homepage";
 import { useState } from "react";
-//import jwt from 'jsonweb'
+import { useJwt } from "react-jwt";
+import Link from "next/link";
 
 function DisplayAllPokemon() {
-  const [accessId, setAccessId] = useState<string>("text");
+  const [accessId, setAccessId] = useState<string>();
+  const [user, setUser] = useState<string>("text");
 
   const getAccessId = async (url: string) => {
     const myArray = await url.split("access_token=");
@@ -17,10 +19,6 @@ function DisplayAllPokemon() {
   };
 
   function fetchItems(sessionToken: string) {
-    console.log("session token" + sessionToken);
-
-    // var decoded = jwt.decode(sessionToken);
-    // console.log(decoded);
     return fetch(
       "https://2y2g1bd5wl.execute-api.ap-south-1.amazonaws.com/Dev/pokemon",
       {
@@ -36,16 +34,20 @@ function DisplayAllPokemon() {
   const fetchUsingId = () => {
     const router = useRouter();
     const url = router.asPath;
-    console.log("url" + url);
     getAccessId(url).then((res) => setAccessId(res));
-    if (accessId !== "text")
+    if (accessId !== "text" && accessId !== undefined)
       fetchItems(accessId).then((res) => console.log(res));
+    //const decoded: any = useJwt(accessId);
   };
 
   fetchUsingId();
 
   return (
     <>
+      <h1> Welcome to Pokedox</h1>
+      <Link href={`http://localhost:3000/`}>
+        <button className="btn btn-primary"> Logout</button>
+      </Link>
       <HomePage />
     </>
   );
